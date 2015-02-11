@@ -1,0 +1,19 @@
+﻿@model Newtonsoft.Json.Linq.JArray
+
+@{
+    ViewBag.Title = "CallService";
+}
+
+<h2>CallService</h2>
+
+
+<ul>
+    @foreach (var claim in Model)
+    {
+        <li>
+            
+            @claim["Type"] : @claim["Value"]
+        </li>
+
+    }
+</ul>

@@ -29,7 +29,7 @@ namespace WebApplication1
                 ClientId = "mvc",
                 RedirectUri = "http://localhost:6516",
                 ResponseType = "id_token token",
-                Scope = "openid evision be",
+                Scope = "openid evision api1",
                 
 
                 UseTokenLifetime = false,

@@ -32,7 +32,7 @@ namespace IdentityServerDemo
             {
                 Enabled = true,
                 Type = ScopeType.Resource,
-                Name = "be"
+                Name = "api1"
             };
             scopes.Add(api1);
 
