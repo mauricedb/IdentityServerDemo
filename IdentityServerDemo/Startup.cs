@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.WsFederation;
 using Owin;
 using Thinktecture.IdentityServer.Core.Configuration;
@@ -33,6 +34,10 @@ namespace IdentityServerDemo
                 RequireSsl = false,
                 Factory = factory,
                 SiteName = "My Test Provider",
+                AuthenticationOptions = new AuthenticationOptions()
+                {IdentityProviders = ConfigureIpds
+                    
+                },
                 SigningCertificate = X509.LocalMachine.My.SubjectDistinguishedName.Find("CN=testcert", validOnly:false).First(),
             };
 
@@ -41,7 +46,7 @@ namespace IdentityServerDemo
             app.UseWelcomePage();
         }
 
-        void Configure(string signinType)
+        void ConfigureIpds(IAppBuilder app, string signInAsType)
         {
             var wsFed = new WsFederationAuthenticationOptions
             {
@@ -49,9 +54,20 @@ namespace IdentityServerDemo
                 Caption = "Signing with ADFS",
                 MetadataAddress = "",
                 Wtrealm = "urn:evision",
-                SignInAsAuthenticationType = signinType
+                SignInAsAuthenticationType = signInAsType
             };
 
+
+            var googleOptions = new GoogleOAuth2AuthenticationOptions()
+            {
+                AuthenticationType = "google",
+                Caption = "Sign in with Google",
+                ClientId = "936550414368-lj6k0md1ncivv85mh696sle5flcr0u1i.apps.googleusercontent.com",
+                ClientSecret = "tM9HJMr79kBQ8w6dGhMEUM_p",
+                SignInAsAuthenticationType = signInAsType
+            };
+
+            app.UseGoogleAuthentication(googleOptions);
         }
        }
 }
