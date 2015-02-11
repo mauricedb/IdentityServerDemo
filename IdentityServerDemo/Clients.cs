@@ -16,7 +16,14 @@ namespace IdentityServerDemo
                new Client()
                {
                    ClientName = "MVC Client",
-                   ClientId = "mvc"
+                   ClientId = "mvc",
+
+                   Flow = Flows.Implicit,
+                   RedirectUris = new List<string>()
+                   {
+                       "http://localhost:6516"
+                   },
+                   RequireConsent = false
                }
            };
         }
