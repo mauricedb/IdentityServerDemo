@@ -15,6 +15,7 @@ namespace IdentityServerDemo
         {
             return new List<InMemoryUser>()
             {
+                
                 new InMemoryUser()
                 {
                     Username = "bob",
@@ -24,6 +25,18 @@ namespace IdentityServerDemo
                     Claims = new List<Claim>
                     {
                         new Claim("name", "Bob Smith")
+                    }
+                },
+                
+                new InMemoryUser()
+                {
+                    Username = "jrustle",
+                    Password = "password",
+                    Enabled = true,
+                    Subject = "2",
+                    Claims = new List<Claim>
+                    {
+                        new Claim("name", "James Rustle")
                     }
                 }
             };

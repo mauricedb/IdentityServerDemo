@@ -23,7 +23,7 @@ namespace IdentityServerDemo
                 Name = "evision",
                 Claims = new List<ScopeClaim>()
                 {
-                    new ScopeClaim("name")
+                    new ScopeClaim("name", alwaysInclude:true)
                 }
             };
             scopes.Add(eVisionScope);
@@ -32,7 +32,7 @@ namespace IdentityServerDemo
             {
                 Enabled = true,
                 Type = ScopeType.Resource,
-                Name = "api1"
+                Name = "be"
             };
             scopes.Add(api1);
 
@@ -40,5 +40,5 @@ namespace IdentityServerDemo
         }
     }
 
-  
+
 }
