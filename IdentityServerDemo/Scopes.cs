@@ -14,7 +14,19 @@ namespace IdentityServerDemo
             var scopes = new List<Scope>();
 
             scopes.Add(StandardScopes.OpenId);
-            scopes.Add(StandardScopes.Profile);
+            //scopes.Add(StandardScopes.Profile);
+
+            var eVisionScope = new Scope()
+            {
+                Enabled = true,
+                Type = ScopeType.Identity,
+                Name = "evision",
+                Claims = new List<ScopeClaim>()
+                {
+                    new ScopeClaim("name")
+                }
+            };
+            scopes.Add(eVisionScope);
 
             var api1 = new Scope()
             {

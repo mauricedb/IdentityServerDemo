@@ -27,19 +27,19 @@ namespace WebApplication1
                 ClientId = "mvc",
                 RedirectUri = "http://localhost:6516",
                 ResponseType = "id_token",
-                Scope = "openid profile",
+                Scope = "openid evision",
                 
 
                 UseTokenLifetime = false,
                 SignInAsAuthenticationType = "Cookies",
 
-                Notifications = new OpenIdConnectAuthenticationNotifications()
-                {
-                    SecurityTokenValidated = async n =>
-                    {
+                //Notifications = new OpenIdConnectAuthenticationNotifications()
+                //{
+                //    SecurityTokenValidated = async n =>
+                //    {
                         
-                    }
-                }
+                //    }
+                //}
                 
             });
 
