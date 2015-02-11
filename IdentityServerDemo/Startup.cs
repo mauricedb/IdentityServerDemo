@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Services;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Owin.Security.WsFederation;
 using Owin;
 using Thinktecture.IdentityServer.Core.Configuration;
 using Thinktecture.IdentityServer.Core.Services;
@@ -31,12 +33,25 @@ namespace IdentityServerDemo
                 RequireSsl = false,
                 Factory = factory,
                 SiteName = "My Test Provider",
-                SigningCertificate = X509.LocalMachine.My.SubjectDistinguishedName.Find("CN=testcert", validOnly:false).First()
+                SigningCertificate = X509.LocalMachine.My.SubjectDistinguishedName.Find("CN=testcert", validOnly:false).First(),
             };
 
             app.UseIdentityServer(options);
 
             app.UseWelcomePage();
         }
-    }
+
+        void Configure(string signinType)
+        {
+            var wsFed = new WsFederationAuthenticationOptions
+            {
+                AuthenticationType = "adfs",
+                Caption = "Signing with ADFS",
+                MetadataAddress = "",
+                Wtrealm = "urn:evision",
+                SignInAsAuthenticationType = signinType
+            };
+
+        }
+       }
 }
