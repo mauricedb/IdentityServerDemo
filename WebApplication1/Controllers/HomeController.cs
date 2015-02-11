@@ -20,5 +20,11 @@ namespace WebApplication1.Controllers
 
             return View(claims.ToList());
         }
+
+        public ActionResult CallService()
+        {
+
+            return View();
+        }
     }
 }

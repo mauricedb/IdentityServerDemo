@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerDemo", "Ident
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{B214A347-A769-402B-93B3-8C01A5275C64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{E0BDC967-745C-40A3-B0C7-12D303749807}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B214A347-A769-402B-93B3-8C01A5275C64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B214A347-A769-402B-93B3-8C01A5275C64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B214A347-A769-402B-93B3-8C01A5275C64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0BDC967-745C-40A3-B0C7-12D303749807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0BDC967-745C-40A3-B0C7-12D303749807}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0BDC967-745C-40A3-B0C7-12D303749807}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0BDC967-745C-40A3-B0C7-12D303749807}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
