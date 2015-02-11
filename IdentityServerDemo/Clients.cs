@@ -21,7 +21,8 @@ namespace IdentityServerDemo
                    Flow = Flows.Implicit,
                    RedirectUris = new List<string>()
                    {
-                       "http://localhost:6516"
+                       "http://localhost:6516",
+                       "http://localhost:6516/js.html"
                    },
                    RequireConsent = false
                }

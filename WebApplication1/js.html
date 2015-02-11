@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+        <button id="getToken">Get token</button>
+        <button id="callService">Call service</button>
+<hr/>
+
+    <div id="results"></div>
+
+<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+<script>
+    $(function() {
+        var token;
+
+        if (window.location.hash) {
+            token = processTokenCallback();
+        }
+
+        function show(data) {
+            $('#results').text(JSON.stringify(data, null, 2));
+        }
+
+        function processTokenCallback() {
+            var hash = window.location.hash.substr(1);
+            var result = hash.split('&').reduce(function (result, item) {
+                var parts = item.split('=');
+                result[parts[0]] = parts[1];
+                return result;
+            }, {});
+
+            show(result);
+
+            if (!result.error) {
+                if (result.state !== sessionStorage.state) {
+                    show("invalid state");
+                }
+                else {
+                    sessionStorage.removeItem("state");
+                    return result.access_token;
+                }
+            }
+        }
+
+        $('#getToken').click(function () {
+            var authorizationUrl = 'http://localhost:12345/connect/authorize';
+            var client_id = 'mvc';
+            var redirect_uri = 'http://localhost:6516/js.html';
+            var response_type = "token";
+            var scope = "api1";
+            var state = Date.now() + "" + Math.random();
+
+            var url =
+                authorizationUrl + "?" +
+                    "client_id=" + encodeURI(client_id) + "&" +
+                    "redirect_uri=" + encodeURI(redirect_uri) + "&" +
+                    "response_type=" + encodeURI(response_type) + "&" +
+                    "scope=" + encodeURI(scope) + "&" +
+                    "state=" + encodeURI(state);
+            sessionStorage.state = state;
+            window.location = url;
+        });
+
+        $('#callService').click(function () {
+            $('#results').text("");
+            $.ajax('http://localhost:19348/api/data', {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            }).then(function (e) {
+                $('#results').text(JSON.stringify(e));
+            }, function (e) {
+                $('#results').text(e);
+            });
+        });
+    });
+</script>
+</body>
+</html>

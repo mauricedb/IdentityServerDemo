@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Owin;
 using Thinktecture.IdentityServer.AccessTokenValidation;
 
@@ -26,7 +27,7 @@ namespace Api
 
             HttpConfiguration configuration = new HttpConfiguration();
             configuration.MapHttpAttributeRoutes();
-            
+            configuration.EnableCors();
             app.UseWebApi(configuration);
         }
     }

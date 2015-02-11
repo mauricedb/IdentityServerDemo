@@ -7,14 +7,16 @@ using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Newtonsoft.Json.Linq;
 
 namespace Api
 {
-    [Route("api/data")]
     [Authorize]
     public class DataController : ApiController
     {
+        [Route("api/data")]
+        [EnableCors("*", "*","*")]
         // GET api/<controller>
         public IHttpActionResult Get()
         {
