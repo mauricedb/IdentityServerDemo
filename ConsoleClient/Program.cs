@@ -11,7 +11,8 @@ namespace ConsoleClient
 {
     class Program
     {
-        //http://jwt.io/
+        // http://jwt.io/
+        // https://tools.ietf.org/html/rfc6750
 
         static void Main(string[] args)
         {
