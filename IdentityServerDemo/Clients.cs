@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using Thinktecture.IdentityServer.Core.Models;
 
 namespace IdentityServerDemo
@@ -38,6 +39,10 @@ namespace IdentityServerDemo
                     {
                         "api1",
                         "api2"
+                    },
+                    Claims = new List<Claim>()
+                    {
+                        new Claim("some claim", "some value")
                     }
                 }
             };
