@@ -40,7 +40,7 @@ namespace IdentityServerDemo
                         "api1",
                         "api2"
                     },
-                    Claims = new List<Claim>()
+                    Claims = new List<Claim>
                     {
                         new Claim("some claim", "some value")
                     }

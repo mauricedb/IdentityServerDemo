@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IdentityModel.Tokens;
-using System.Linq;
 using System.Security.Claims;
-using System.Web;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OpenIdConnect;
@@ -17,25 +14,21 @@ namespace WebApplication1
         {
             JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions()
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = "Cookies"
             });
 
-            app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions()
+            app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
-                
                 Authority = "http://localhost:12345",
                 ClientId = "mvc",
                 RedirectUri = "http://localhost:6516",
                 ResponseType = "id_token token",
                 Scope = "openid evision api1",
-                
-
                 UseTokenLifetime = false,
                 SignInAsAuthenticationType = "Cookies",
-
-                Notifications = new OpenIdConnectAuthenticationNotifications()
+                Notifications = new OpenIdConnectAuthenticationNotifications
                 {
                     SecurityTokenValidated = async n =>
                     {
@@ -53,9 +46,7 @@ namespace WebApplication1
                         n.AuthenticationTicket = new AuthenticationTicket(id, n.AuthenticationTicket.Properties);
                     }
                 }
-                
             });
-
         }
     }
 }

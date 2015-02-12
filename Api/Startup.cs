@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IdentityModel.Tokens;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
-using System.Web.Http.Cors;
 using Owin;
 using Thinktecture.IdentityServer.AccessTokenValidation;
 
@@ -18,18 +15,17 @@ namespace Api
         {
             JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
 
-            app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions()
+            app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
             {
                 Authority = "http://localhost:12345",
                 ValidationMode = ValidationMode.Local,
-
-                RequiredScopes = new[] { "api1" }
+                RequiredScopes = new[] {"api1"}
             });
 
             app.UseClaimsTransformation(Transform);
 
 
-            HttpConfiguration configuration = new HttpConfiguration();
+            var configuration = new HttpConfiguration();
             configuration.MapHttpAttributeRoutes();
             configuration.EnableCors();
             app.UseWebApi(configuration);

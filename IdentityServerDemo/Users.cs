@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using Thinktecture.IdentityServer.Core.Models;
 using Thinktecture.IdentityServer.Core.Services.InMemory;
 
 namespace IdentityServerDemo
@@ -13,10 +8,9 @@ namespace IdentityServerDemo
     {
         public static List<InMemoryUser> Get()
         {
-            return new List<InMemoryUser>()
+            return new List<InMemoryUser>
             {
-                
-                new InMemoryUser()
+                new InMemoryUser
                 {
                     Username = "bob",
                     Password = "bob",
@@ -27,8 +21,7 @@ namespace IdentityServerDemo
                         new Claim("name", "Bob Smith")
                     }
                 },
-                
-                new InMemoryUser()
+                new InMemoryUser
                 {
                     Username = "jrustle",
                     Password = "password",
@@ -40,6 +33,6 @@ namespace IdentityServerDemo
                     }
                 }
             };
-        } 
+        }
     }
 }

@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
 using Thinktecture.IdentityModel.Client;
 
 namespace ConsoleClient
 {
-    class Program
+    internal class Program
     {
         // http://jwt.io/
         // https://tools.ietf.org/html/rfc6750
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Client Credential Flow
 
@@ -60,7 +55,6 @@ namespace ConsoleClient
 
 
             Console.ReadLine();
-
         }
     }
 }
