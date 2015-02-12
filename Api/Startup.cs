@@ -37,6 +37,7 @@ namespace Api
 
         private Task<ClaimsPrincipal> Transform(ClaimsPrincipal incoming)
         {
+            incoming.Identities.First().AddClaim(new Claim("app_specific", "some value"));
             return Task.FromResult(incoming);
         }
     }
