@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IdentityModel.Tokens;
 using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -24,11 +26,18 @@ namespace Api
                 RequiredScopes = new[] { "api1" }
             });
 
+            app.UseClaimsTransformation(Transform);
+
 
             HttpConfiguration configuration = new HttpConfiguration();
             configuration.MapHttpAttributeRoutes();
             configuration.EnableCors();
             app.UseWebApi(configuration);
+        }
+
+        private Task<ClaimsPrincipal> Transform(ClaimsPrincipal incoming)
+        {
+            return Task.FromResult(incoming);
         }
     }
 }
